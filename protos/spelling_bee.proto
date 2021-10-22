@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package app;
+
+service SpellingBee {
+    rpc StartGame (GameRequest) returns (GameResponse) {}
+}
+
+message GameRequest {
+    string userName = 1;
+}
+
+message GameResponse {
+    string gameID = 1;
+}
