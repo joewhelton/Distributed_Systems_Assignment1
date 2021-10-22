@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"\x1f\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\" \n\x0cGameResponse\x12\x10\n\x08userName\x18\x01 \x01(\t2A\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"\x1f\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"\x1e\n\x0cGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t2A\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -66,7 +66,7 @@ _GAMERESPONSE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userName', full_name='app.GameResponse.userName', index=0,
+      name='gameID', full_name='app.GameResponse.gameID', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -85,7 +85,7 @@ _GAMERESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=60,
-  serialized_end=92,
+  serialized_end=90,
 )
 
 DESCRIPTOR.message_types_by_name['GameRequest'] = _GAMEREQUEST
@@ -115,8 +115,8 @@ _SPELLINGBEE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=94,
-  serialized_end=159,
+  serialized_start=92,
+  serialized_end=157,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartGame',
