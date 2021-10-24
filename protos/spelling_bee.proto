@@ -4,7 +4,7 @@ package app;
 
 service SpellingBee {
     rpc StartGame (GameRequest) returns (GameResponse) {}
-    rpc CheckWord (CheckWordRequest) returns (CheckWordResponse)
+    rpc CheckWord (CheckWordRequest) returns (CheckWordResponse) {}
 }
 
 message GameRequest {
@@ -16,4 +16,15 @@ message GameResponse {
     int32 score = 2;
     string letters = 3;
     string middleLetter = 4;
+}
+
+message CheckWordRequest {
+    string gameID = 1;
+    string word = 2;
+}
+
+message CheckWordResponse {
+    bool status = 1;
+    string message = 2;
+    int32 score = 3;
 }

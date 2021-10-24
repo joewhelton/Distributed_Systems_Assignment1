@@ -2,8 +2,9 @@ from client.client_game import ClientGame
 
 
 def game_menu(game):
-    game.display_letters()
+    print(game.display_letters())
     newWord = input("Enter word - ")
+    print("{} - Score {}".format(game.check_word(newWord), game.clientGame["score"]))
 
 
 def run():

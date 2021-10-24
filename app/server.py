@@ -2,7 +2,7 @@ import logging
 from concurrent import futures
 
 import grpc
-from spelling_bee_pb2 import GameResponse
+from spelling_bee_pb2 import GameResponse, CheckWordResponse
 from spelling_bee_pb2_grpc import SpellingBeeServicer, add_SpellingBeeServicer_to_server
 from app.game.game import Game
 from app.game_registry import GameRegistry
@@ -20,6 +20,15 @@ class GameServer(SpellingBeeServicer):
             score=newGame.score,
             letters=str().join(newGame.letters),
             middleLetter=newGame.middleLetter
+        )
+
+    def CheckWord(self, request, context):
+        game = self.registry.get_game(request.gameID)
+        status, message = game.check_word(request.word)
+        return CheckWordResponse(
+            status=status,
+            message=message,
+            score=game.score
         )
 
 
