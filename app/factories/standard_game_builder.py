@@ -35,9 +35,10 @@ class StandardGame(GameTemplate):
         if word in self.guessedWords:
             return False, "Word already used"
 
-        self.score += self.calculate_score(word)
+        wordScore = self.calculate_score(word)
+        self.score += wordScore
         self.guessedWords.append(word)
-        return True, "Good stuff"
+        return True, "Good stuff, word scored {}".format(wordScore)
 
     def calculate_score(self, word):
         score = 1

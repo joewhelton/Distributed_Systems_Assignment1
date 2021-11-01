@@ -14,7 +14,7 @@ def setup_menu():
 def game_menu(game):
     print(game.display_letters())
     newWord = input("Enter word - ")
-    print("{} - Score {}".format(game.check_word(newWord), game.clientGame["score"]))
+    print("{} - Total {}".format(game.check_word(newWord), game.clientGame["score"]))
 
 
 def run():
