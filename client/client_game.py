@@ -6,14 +6,14 @@ from random import shuffle
 
 class ClientGame:
 
-    def __init__(self):
-        self.username = "Joe"
+    def __init__(self, username):
+        self.username = username
         self.clientGame = None
         self.channel = grpc.insecure_channel('127.0.0.1:58008')
         self.stub = spelling_bee_pb2_grpc.SpellingBeeStub(self.channel)
 
-    def start_game(self):
-        response = self.stub.StartGame(spelling_bee_pb2.GameRequest(userName="Joe"))
+    def start_game(self, gameType):
+        response = self.stub.StartGame(spelling_bee_pb2.GameRequest(userName=self.username, gameType=gameType))
         self.clientGame = {
             "gameID": response.gameID,
             "score": response.score,
@@ -34,7 +34,7 @@ class ClientGame:
     def display_letters(self):
         display_string = ""
         for i in range(len(self.clientGame["letters"])):
-            if i == len(self.clientGame["letters"])/2:
+            if i == len(self.clientGame["letters"])/2 and self.clientGame["middleLetter"] != "":
                 display_string += "[{}] ".format(self.clientGame["middleLetter"])
             display_string += "{} ".format(self.clientGame["letters"][i])
         return display_string

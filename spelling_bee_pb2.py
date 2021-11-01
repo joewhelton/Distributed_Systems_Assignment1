@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"\x1f\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"T\n\x0cGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\"0\n\x10\x43heckWordRequest\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\x0c\n\x04word\x18\x02 \x01(\t\"C\n\x11\x43heckWordResponse\x12\x0e\n\x06status\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x05\x32\x7f\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x12<\n\tCheckWord\x12\x15.app.CheckWordRequest\x1a\x16.app.CheckWordResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"1\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x10\n\x08gameType\x18\x02 \x01(\t\"T\n\x0cGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\"0\n\x10\x43heckWordRequest\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\x0c\n\x04word\x18\x02 \x01(\t\"C\n\x11\x43heckWordResponse\x12\x0e\n\x06status\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x05\x32\x7f\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x12<\n\tCheckWord\x12\x15.app.CheckWordRequest\x1a\x16.app.CheckWordResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -40,6 +40,13 @@ _GAMEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='gameType', full_name='app.GameRequest.gameType', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -53,7 +60,7 @@ _GAMEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=27,
-  serialized_end=58,
+  serialized_end=76,
 )
 
 
@@ -105,8 +112,8 @@ _GAMERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=60,
-  serialized_end=144,
+  serialized_start=78,
+  serialized_end=162,
 )
 
 
@@ -144,8 +151,8 @@ _CHECKWORDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=146,
-  serialized_end=194,
+  serialized_start=164,
+  serialized_end=212,
 )
 
 
@@ -190,8 +197,8 @@ _CHECKWORDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=196,
-  serialized_end=263,
+  serialized_start=214,
+  serialized_end=281,
 )
 
 DESCRIPTOR.message_types_by_name['GameRequest'] = _GAMEREQUEST
@@ -237,8 +244,8 @@ _SPELLINGBEE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=265,
-  serialized_end=392,
+  serialized_start=283,
+  serialized_end=410,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartGame',

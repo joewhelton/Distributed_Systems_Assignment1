@@ -9,6 +9,7 @@ service SpellingBee {
 
 message GameRequest {
     string userName = 1;
+    string gameType = 2;
 }
 
 message GameResponse {
