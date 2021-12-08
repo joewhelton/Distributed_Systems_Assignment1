@@ -6,8 +6,8 @@ gameTypes = {
 }
 
 def setup_menu():
-    name = input("Enter a username")
-    gameType = input("(1) - Standard    (2) - Easy")
+    name = input("Enter a username - ")
+    gameType = input("(1) - Standard    (2) - Easy ")
     return name, gameTypes[int(gameType)]
 
 

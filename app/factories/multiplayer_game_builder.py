@@ -3,11 +3,15 @@ import json
 from app.factories.game_template import GameTemplate
 
 
-class StandardGame(GameTemplate):
+class MultiplayerGame(GameTemplate):
     min_word_length = 4
+    max_players = 2
+    time_limit = 180  # Time in seconds
 
     def __init__(self):
         super().__init__()
+        self.players = []
+        self.start_time = ""
 
     def generate_valid_words(self):
         self.letters = set(self.pangram)
@@ -24,19 +28,7 @@ class StandardGame(GameTemplate):
                     self.validWords[word] = ""
 
     def check_word(self, word):
-        if len(word) < self.min_word_length:
-            return False, "Word is too short"
-        if self.middleLetter not in word:
-            return False, "Middle letter not used"
-        if word not in list(self.validWords.keys()):
-            return False, "Invalid word"
-        if word in self.guessedWords:
-            return False, "Word already used"
-
-        wordScore = self.calculate_score(word)
-        self.score += wordScore
-        self.guessedWords.append(word)
-        return True, "Good stuff, word scored {}".format(wordScore)
+        pass
 
     def calculate_score(self, word):
         score = 1
@@ -48,10 +40,10 @@ class StandardGame(GameTemplate):
         return score
 
 
-class StandardGameBuilder:
+class MultiplayerGameBuilder:
 
     def __init__(self):
         pass
 
     def __call__(self):
-        return StandardGame()
+        return MultiplayerGame()

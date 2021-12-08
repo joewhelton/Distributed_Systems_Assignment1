@@ -5,7 +5,7 @@ import grpc
 from spelling_bee_pb2 import GameResponse, CheckWordResponse
 from spelling_bee_pb2_grpc import SpellingBeeServicer, add_SpellingBeeServicer_to_server
 from app.game_registry import GameRegistry
-from app.factories import object_factory, standard_game_builder, easy_game_builder
+from app.factories import object_factory, standard_game_builder, easy_game_builder, multiplayer_game_builder
 
 
 class GameServer(SpellingBeeServicer):
@@ -34,6 +34,15 @@ class GameServer(SpellingBeeServicer):
             message=message,
             score=game.score
         )
+
+    def NewMultiplayerGame(self, request, context):
+        pass
+
+    def JoinMultiplayerGame(self, request, context):
+        pass
+
+    def GetMultiplayerStatus(self, request, context):
+        pass
 
 
 def serve():
