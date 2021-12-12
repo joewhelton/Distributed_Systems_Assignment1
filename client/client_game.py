@@ -18,7 +18,8 @@ class ClientGame:
             "gameID": response.gameID,
             "score": response.score,
             "letters": list(response.letters),
-            "middleLetter": response.middleLetter
+            "middleLetter": response.middleLetter,
+            "gameType": gameType
         }
         self.shuffle_letters()
 
@@ -30,6 +31,33 @@ class ClientGame:
         if response.status:
             self.clientGame["score"] = response.score
         return response.message
+
+    def new_multiplayer_game(self):
+        response = self.stub.NewMultiplayerGame(spelling_bee_pb2.NewMultiplayerGameRequest(userName=self.username))
+        self.clientGame = {
+            "gameID": response.gameID,
+            "scores": response.scores,
+            "letters": list(response.letters),
+            "middleLetter": response.middleLetter,
+            "shareCode": response.shareCode,
+            "timeLimit": response.timeLimit,
+            "gameType": 3
+        }
+        self.shuffle_letters()
+
+    def join_multiplayer_game(self, shareCode):
+        response = self.stub.JoinMultiplayerGame(spelling_bee_pb2.JoinMultiplayerGameRequest(userName=self.username, shareCode=shareCode))
+        if response.errorMessage != "":
+            return False, response.errorMessage
+        self.clientGame = {
+            "gameID": response.gameID,
+            "scores": response.scores,
+            "letters": list(response.letters),
+            "middleLetter": response.middleLetter,
+            "timeLimit": response.timeLimit,
+            "gameType": 3
+        }
+        return True, "Game joined"
 
     def display_letters(self):
         display_string = ""

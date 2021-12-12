@@ -5,6 +5,10 @@ package app;
 service SpellingBee {
     rpc StartGame (GameRequest) returns (GameResponse) {}
     rpc CheckWord (CheckWordRequest) returns (CheckWordResponse) {}
+    rpc NewMultiplayerGame (NewMultiplayerGameRequest) returns (NewMultiplayerGameResponse) {}
+    rpc JoinMultiplayerGame (JoinMultiplayerGameRequest) returns (JoinMultiplayerGameResponse) {}
+    rpc CheckWordMultiplayer (CheckWordMultiplayerRequest) returns (CheckWordMultiplayerResponse) {}
+    rpc GetMultiplayerStatus (NewMultiplayerGameRequest) returns (NewMultiplayerGameResponse) {}
 }
 
 message GameRequest {
@@ -28,4 +32,63 @@ message CheckWordResponse {
     bool status = 1;
     string message = 2;
     int32 score = 3;
+}
+
+message NewMultiplayerGameRequest{
+    string userName = 1;
+}
+
+message NewMultiplayerGameResponse{
+    string gameID = 1;
+    repeated MultiPlayerScore scores = 2;
+    string letters = 3;
+    string middleLetter = 4;
+    string shareCode = 5;
+    int32 timeLimit = 6;
+}
+
+message JoinMultiplayerGameRequest{
+    string userName = 1;
+    string shareCode = 2;
+}
+
+message JoinMultiplayerGameResponse{
+    string gameID = 1;
+    repeated MultiPlayerScore scores = 2;
+    string letters = 3;
+    string middleLetter = 4;
+    int32 timeLimit = 6;
+    string errorMessage = 7;
+}
+
+message GetMultiplayerStatusRequest{
+    string gameId = 1;
+}
+
+message GetMultiplayerStatusResponse{
+    repeated MultiPlayerScore scores = 2;
+    string timeRemaining = 3;
+}
+
+message CheckWordMultiplayerRequest{
+    string gameID = 1;
+    string userName = 2;
+    string word = 3;
+}
+
+message CheckWordMultiplayerResponse{
+    bool status = 1;
+    string message = 2;
+    int32 score = 3;
+    repeated MultiPlayerScore scores = 4;
+}
+
+message MultiPlayerScore{
+    string playerName = 1;
+    int32 score = 2;
+    repeated Words wordList = 3;
+}
+
+message Words{
+    string word = 1;
 }

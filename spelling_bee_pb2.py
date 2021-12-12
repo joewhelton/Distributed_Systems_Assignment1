@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"1\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x10\n\x08gameType\x18\x02 \x01(\t\"T\n\x0cGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\"0\n\x10\x43heckWordRequest\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\x0c\n\x04word\x18\x02 \x01(\t\"C\n\x11\x43heckWordResponse\x12\x0e\n\x06status\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x05\x32\x7f\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x12<\n\tCheckWord\x12\x15.app.CheckWordRequest\x1a\x16.app.CheckWordResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"1\n\x0bGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x10\n\x08gameType\x18\x02 \x01(\t\"T\n\x0cGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\"0\n\x10\x43heckWordRequest\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\x0c\n\x04word\x18\x02 \x01(\t\"C\n\x11\x43heckWordResponse\x12\x0e\n\x06status\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x05\"-\n\x19NewMultiplayerGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"\xa0\x01\n\x1aNewMultiplayerGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12%\n\x06scores\x18\x02 \x03(\x0b\x32\x15.app.MultiPlayerScore\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\x12\x11\n\tshareCode\x18\x05 \x01(\t\x12\x11\n\ttimeLimit\x18\x06 \x01(\x05\"A\n\x1aJoinMultiplayerGameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x11\n\tshareCode\x18\x02 \x01(\t\"\xa4\x01\n\x1bJoinMultiplayerGameResponse\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12%\n\x06scores\x18\x02 \x03(\x0b\x32\x15.app.MultiPlayerScore\x12\x0f\n\x07letters\x18\x03 \x01(\t\x12\x14\n\x0cmiddleLetter\x18\x04 \x01(\t\x12\x11\n\ttimeLimit\x18\x06 \x01(\x05\x12\x14\n\x0c\x65rrorMessage\x18\x07 \x01(\t\"-\n\x1bGetMultiplayerStatusRequest\x12\x0e\n\x06gameId\x18\x01 \x01(\t\"\\\n\x1cGetMultiplayerStatusResponse\x12%\n\x06scores\x18\x02 \x03(\x0b\x32\x15.app.MultiPlayerScore\x12\x15\n\rtimeRemaining\x18\x03 \x01(\t\"M\n\x1b\x43heckWordMultiplayerRequest\x12\x0e\n\x06gameID\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\x12\x0c\n\x04word\x18\x03 \x01(\t\"u\n\x1c\x43heckWordMultiplayerResponse\x12\x0e\n\x06status\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x05\x12%\n\x06scores\x18\x04 \x03(\x0b\x32\x15.app.MultiPlayerScore\"S\n\x10MultiPlayerScore\x12\x12\n\nplayerName\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x05\x12\x1c\n\x08wordList\x18\x03 \x03(\x0b\x32\n.app.Words\"\x15\n\x05Words\x12\x0c\n\x04word\x18\x01 \x01(\t2\xee\x03\n\x0bSpellingBee\x12\x32\n\tStartGame\x12\x10.app.GameRequest\x1a\x11.app.GameResponse\"\x00\x12<\n\tCheckWord\x12\x15.app.CheckWordRequest\x1a\x16.app.CheckWordResponse\"\x00\x12W\n\x12NewMultiplayerGame\x12\x1e.app.NewMultiplayerGameRequest\x1a\x1f.app.NewMultiplayerGameResponse\"\x00\x12Z\n\x13JoinMultiplayerGame\x12\x1f.app.JoinMultiplayerGameRequest\x1a .app.JoinMultiplayerGameResponse\"\x00\x12]\n\x14\x43heckWordMultiplayer\x12 .app.CheckWordMultiplayerRequest\x1a!.app.CheckWordMultiplayerResponse\"\x00\x12Y\n\x14GetMultiplayerStatus\x12\x1e.app.NewMultiplayerGameRequest\x1a\x1f.app.NewMultiplayerGameResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -201,10 +201,478 @@ _CHECKWORDRESPONSE = _descriptor.Descriptor(
   serialized_end=281,
 )
 
+
+_NEWMULTIPLAYERGAMEREQUEST = _descriptor.Descriptor(
+  name='NewMultiplayerGameRequest',
+  full_name='app.NewMultiplayerGameRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='app.NewMultiplayerGameRequest.userName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=283,
+  serialized_end=328,
+)
+
+
+_NEWMULTIPLAYERGAMERESPONSE = _descriptor.Descriptor(
+  name='NewMultiplayerGameResponse',
+  full_name='app.NewMultiplayerGameResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gameID', full_name='app.NewMultiplayerGameResponse.gameID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scores', full_name='app.NewMultiplayerGameResponse.scores', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='letters', full_name='app.NewMultiplayerGameResponse.letters', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='middleLetter', full_name='app.NewMultiplayerGameResponse.middleLetter', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='shareCode', full_name='app.NewMultiplayerGameResponse.shareCode', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='timeLimit', full_name='app.NewMultiplayerGameResponse.timeLimit', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=331,
+  serialized_end=491,
+)
+
+
+_JOINMULTIPLAYERGAMEREQUEST = _descriptor.Descriptor(
+  name='JoinMultiplayerGameRequest',
+  full_name='app.JoinMultiplayerGameRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='app.JoinMultiplayerGameRequest.userName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='shareCode', full_name='app.JoinMultiplayerGameRequest.shareCode', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=493,
+  serialized_end=558,
+)
+
+
+_JOINMULTIPLAYERGAMERESPONSE = _descriptor.Descriptor(
+  name='JoinMultiplayerGameResponse',
+  full_name='app.JoinMultiplayerGameResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gameID', full_name='app.JoinMultiplayerGameResponse.gameID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scores', full_name='app.JoinMultiplayerGameResponse.scores', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='letters', full_name='app.JoinMultiplayerGameResponse.letters', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='middleLetter', full_name='app.JoinMultiplayerGameResponse.middleLetter', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='timeLimit', full_name='app.JoinMultiplayerGameResponse.timeLimit', index=4,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='errorMessage', full_name='app.JoinMultiplayerGameResponse.errorMessage', index=5,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=561,
+  serialized_end=725,
+)
+
+
+_GETMULTIPLAYERSTATUSREQUEST = _descriptor.Descriptor(
+  name='GetMultiplayerStatusRequest',
+  full_name='app.GetMultiplayerStatusRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gameId', full_name='app.GetMultiplayerStatusRequest.gameId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=727,
+  serialized_end=772,
+)
+
+
+_GETMULTIPLAYERSTATUSRESPONSE = _descriptor.Descriptor(
+  name='GetMultiplayerStatusResponse',
+  full_name='app.GetMultiplayerStatusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='scores', full_name='app.GetMultiplayerStatusResponse.scores', index=0,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='timeRemaining', full_name='app.GetMultiplayerStatusResponse.timeRemaining', index=1,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=774,
+  serialized_end=866,
+)
+
+
+_CHECKWORDMULTIPLAYERREQUEST = _descriptor.Descriptor(
+  name='CheckWordMultiplayerRequest',
+  full_name='app.CheckWordMultiplayerRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gameID', full_name='app.CheckWordMultiplayerRequest.gameID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='app.CheckWordMultiplayerRequest.userName', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='word', full_name='app.CheckWordMultiplayerRequest.word', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=868,
+  serialized_end=945,
+)
+
+
+_CHECKWORDMULTIPLAYERRESPONSE = _descriptor.Descriptor(
+  name='CheckWordMultiplayerResponse',
+  full_name='app.CheckWordMultiplayerResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='app.CheckWordMultiplayerResponse.status', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='app.CheckWordMultiplayerResponse.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='app.CheckWordMultiplayerResponse.score', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scores', full_name='app.CheckWordMultiplayerResponse.scores', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=947,
+  serialized_end=1064,
+)
+
+
+_MULTIPLAYERSCORE = _descriptor.Descriptor(
+  name='MultiPlayerScore',
+  full_name='app.MultiPlayerScore',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='playerName', full_name='app.MultiPlayerScore.playerName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='app.MultiPlayerScore.score', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='wordList', full_name='app.MultiPlayerScore.wordList', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1066,
+  serialized_end=1149,
+)
+
+
+_WORDS = _descriptor.Descriptor(
+  name='Words',
+  full_name='app.Words',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='word', full_name='app.Words.word', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1151,
+  serialized_end=1172,
+)
+
+_NEWMULTIPLAYERGAMERESPONSE.fields_by_name['scores'].message_type = _MULTIPLAYERSCORE
+_JOINMULTIPLAYERGAMERESPONSE.fields_by_name['scores'].message_type = _MULTIPLAYERSCORE
+_GETMULTIPLAYERSTATUSRESPONSE.fields_by_name['scores'].message_type = _MULTIPLAYERSCORE
+_CHECKWORDMULTIPLAYERRESPONSE.fields_by_name['scores'].message_type = _MULTIPLAYERSCORE
+_MULTIPLAYERSCORE.fields_by_name['wordList'].message_type = _WORDS
 DESCRIPTOR.message_types_by_name['GameRequest'] = _GAMEREQUEST
 DESCRIPTOR.message_types_by_name['GameResponse'] = _GAMERESPONSE
 DESCRIPTOR.message_types_by_name['CheckWordRequest'] = _CHECKWORDREQUEST
 DESCRIPTOR.message_types_by_name['CheckWordResponse'] = _CHECKWORDRESPONSE
+DESCRIPTOR.message_types_by_name['NewMultiplayerGameRequest'] = _NEWMULTIPLAYERGAMEREQUEST
+DESCRIPTOR.message_types_by_name['NewMultiplayerGameResponse'] = _NEWMULTIPLAYERGAMERESPONSE
+DESCRIPTOR.message_types_by_name['JoinMultiplayerGameRequest'] = _JOINMULTIPLAYERGAMEREQUEST
+DESCRIPTOR.message_types_by_name['JoinMultiplayerGameResponse'] = _JOINMULTIPLAYERGAMERESPONSE
+DESCRIPTOR.message_types_by_name['GetMultiplayerStatusRequest'] = _GETMULTIPLAYERSTATUSREQUEST
+DESCRIPTOR.message_types_by_name['GetMultiplayerStatusResponse'] = _GETMULTIPLAYERSTATUSRESPONSE
+DESCRIPTOR.message_types_by_name['CheckWordMultiplayerRequest'] = _CHECKWORDMULTIPLAYERREQUEST
+DESCRIPTOR.message_types_by_name['CheckWordMultiplayerResponse'] = _CHECKWORDMULTIPLAYERRESPONSE
+DESCRIPTOR.message_types_by_name['MultiPlayerScore'] = _MULTIPLAYERSCORE
+DESCRIPTOR.message_types_by_name['Words'] = _WORDS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GameRequest = _reflection.GeneratedProtocolMessageType('GameRequest', (_message.Message,), {
@@ -235,6 +703,76 @@ CheckWordResponse = _reflection.GeneratedProtocolMessageType('CheckWordResponse'
   })
 _sym_db.RegisterMessage(CheckWordResponse)
 
+NewMultiplayerGameRequest = _reflection.GeneratedProtocolMessageType('NewMultiplayerGameRequest', (_message.Message,), {
+  'DESCRIPTOR' : _NEWMULTIPLAYERGAMEREQUEST,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.NewMultiplayerGameRequest)
+  })
+_sym_db.RegisterMessage(NewMultiplayerGameRequest)
+
+NewMultiplayerGameResponse = _reflection.GeneratedProtocolMessageType('NewMultiplayerGameResponse', (_message.Message,), {
+  'DESCRIPTOR' : _NEWMULTIPLAYERGAMERESPONSE,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.NewMultiplayerGameResponse)
+  })
+_sym_db.RegisterMessage(NewMultiplayerGameResponse)
+
+JoinMultiplayerGameRequest = _reflection.GeneratedProtocolMessageType('JoinMultiplayerGameRequest', (_message.Message,), {
+  'DESCRIPTOR' : _JOINMULTIPLAYERGAMEREQUEST,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.JoinMultiplayerGameRequest)
+  })
+_sym_db.RegisterMessage(JoinMultiplayerGameRequest)
+
+JoinMultiplayerGameResponse = _reflection.GeneratedProtocolMessageType('JoinMultiplayerGameResponse', (_message.Message,), {
+  'DESCRIPTOR' : _JOINMULTIPLAYERGAMERESPONSE,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.JoinMultiplayerGameResponse)
+  })
+_sym_db.RegisterMessage(JoinMultiplayerGameResponse)
+
+GetMultiplayerStatusRequest = _reflection.GeneratedProtocolMessageType('GetMultiplayerStatusRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETMULTIPLAYERSTATUSREQUEST,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.GetMultiplayerStatusRequest)
+  })
+_sym_db.RegisterMessage(GetMultiplayerStatusRequest)
+
+GetMultiplayerStatusResponse = _reflection.GeneratedProtocolMessageType('GetMultiplayerStatusResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETMULTIPLAYERSTATUSRESPONSE,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.GetMultiplayerStatusResponse)
+  })
+_sym_db.RegisterMessage(GetMultiplayerStatusResponse)
+
+CheckWordMultiplayerRequest = _reflection.GeneratedProtocolMessageType('CheckWordMultiplayerRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CHECKWORDMULTIPLAYERREQUEST,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.CheckWordMultiplayerRequest)
+  })
+_sym_db.RegisterMessage(CheckWordMultiplayerRequest)
+
+CheckWordMultiplayerResponse = _reflection.GeneratedProtocolMessageType('CheckWordMultiplayerResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CHECKWORDMULTIPLAYERRESPONSE,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.CheckWordMultiplayerResponse)
+  })
+_sym_db.RegisterMessage(CheckWordMultiplayerResponse)
+
+MultiPlayerScore = _reflection.GeneratedProtocolMessageType('MultiPlayerScore', (_message.Message,), {
+  'DESCRIPTOR' : _MULTIPLAYERSCORE,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.MultiPlayerScore)
+  })
+_sym_db.RegisterMessage(MultiPlayerScore)
+
+Words = _reflection.GeneratedProtocolMessageType('Words', (_message.Message,), {
+  'DESCRIPTOR' : _WORDS,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.Words)
+  })
+_sym_db.RegisterMessage(Words)
+
 
 
 _SPELLINGBEE = _descriptor.ServiceDescriptor(
@@ -244,8 +782,8 @@ _SPELLINGBEE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=283,
-  serialized_end=410,
+  serialized_start=1175,
+  serialized_end=1669,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartGame',
@@ -264,6 +802,46 @@ _SPELLINGBEE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CHECKWORDREQUEST,
     output_type=_CHECKWORDRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='NewMultiplayerGame',
+    full_name='app.SpellingBee.NewMultiplayerGame',
+    index=2,
+    containing_service=None,
+    input_type=_NEWMULTIPLAYERGAMEREQUEST,
+    output_type=_NEWMULTIPLAYERGAMERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='JoinMultiplayerGame',
+    full_name='app.SpellingBee.JoinMultiplayerGame',
+    index=3,
+    containing_service=None,
+    input_type=_JOINMULTIPLAYERGAMEREQUEST,
+    output_type=_JOINMULTIPLAYERGAMERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CheckWordMultiplayer',
+    full_name='app.SpellingBee.CheckWordMultiplayer',
+    index=4,
+    containing_service=None,
+    input_type=_CHECKWORDMULTIPLAYERREQUEST,
+    output_type=_CHECKWORDMULTIPLAYERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetMultiplayerStatus',
+    full_name='app.SpellingBee.GetMultiplayerStatus',
+    index=5,
+    containing_service=None,
+    input_type=_NEWMULTIPLAYERGAMEREQUEST,
+    output_type=_NEWMULTIPLAYERGAMERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

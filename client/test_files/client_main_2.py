@@ -17,7 +17,7 @@ def multiplayer_menu():
     shareCode = ""
     newOrJoin = input("Start (N)ew game or (J)oin existing?")
     if newOrJoin == "J":
-        shareCode = "Enter your sharecode"
+        shareCode = input("Enter your sharecode")
     return newOrJoin, shareCode
 
 
