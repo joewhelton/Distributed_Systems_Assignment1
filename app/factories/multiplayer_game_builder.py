@@ -33,8 +33,28 @@ class MultiplayerGame(GameTemplate):
                         and len(word) >= self.min_word_length:
                     self.validWords[word] = ""
 
-    def check_word(self, word):
-        pass
+    def check_word(self, word, username):
+        if not self.game_started:
+            return False, "Waiting for other player to join"
+        if len(word) < self.min_word_length:
+            return False, "Word is too short"
+        if self.middleLetter not in word:
+            return False, "Middle letter not used"
+        if word not in list(self.validWords.keys()):
+            return False, "Invalid word"
+
+        self.lock.acquire()
+        if word in self.guessedWords:
+            return False, "Word already used"
+        self.guessedWords.append(word)
+        self.lock.release()
+
+        wordScore = self.calculate_score(word)
+        playerIndex = self.get_player_index(username)
+        if playerIndex > -1:
+            self.playerScores[playerIndex]["score"] += wordScore
+            self.playerScores[playerIndex]["wordList"].append(word)
+            return True, "Scored {} with {}".format(wordScore, word)
 
     def calculate_score(self, word):
         score = 1
@@ -53,10 +73,16 @@ class MultiplayerGame(GameTemplate):
                 "score": 0,
                 "wordList": []
             })
-        self.game_started = True
-        self.start_time = datetime.datetime.now()
+        if len(self.playerScores) == 2:
+            self.game_started = True
+            self.start_time = datetime.datetime.now()
         self.lock.release()
 
+    def get_player_index(self, playerName):
+        for index, item in enumerate(self.playerScores):
+            if item.get("playerName") == playerName:
+                return index
+        return -1
 
 
 class MultiplayerGameBuilder:

@@ -81,7 +81,14 @@ class GameServer(SpellingBeeServicer):
         )
 
     def CheckWordMultiplayer(self, request, context):
-        pass
+        game = self.registry.get_game(request.gameID)
+        status, message = game.check_word(request.word, request.userName)
+        return CheckWordMultiplayerResponse(
+            status=status,
+            message=message,
+            scores=game.playerScores
+            # scores=str.join(game.playerScores)
+        )
 
     def GetMultiplayerStatus(self, request, context):
         pass

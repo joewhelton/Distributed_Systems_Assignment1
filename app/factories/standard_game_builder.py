@@ -23,7 +23,7 @@ class StandardGame(GameTemplate):
                         and len(word) >= self.min_word_length:
                     self.validWords[word] = ""
 
-    def check_word(self, word):
+    def check_word(self, word, username=""):
         if len(word) < self.min_word_length:
             return False, "Word is too short"
         if self.middleLetter not in word:

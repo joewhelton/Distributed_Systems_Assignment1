@@ -7,6 +7,13 @@ gameTypes = {
 }
 
 
+def format_multiplayer_scores(playerScores):
+    # print(playerScores)
+    # print(playerScores[0])
+    for player in playerScores:
+        print("{}'s total: {}".format(player.playerName, player.score))
+
+
 def setup_menu():
     name = input("Enter a username - ")
     gameType = input("(1) - Standard    (2) - Easy    (3) - Multiplayer ")
@@ -24,7 +31,12 @@ def multiplayer_menu():
 def game_menu(game):
     print(game.display_letters())
     newWord = input("Enter word - ")
-    print("{} - Total {}".format(game.check_word(newWord), game.clientGame["score"]))
+    if game.clientGame["gameType"] == "multiplayer":
+        message = game.check_word_multiplayer(newWord)
+        print(message)
+        format_multiplayer_scores(game.clientGame["scores"])
+    else:
+        print("{} - Total {}".format(game.check_word(newWord), game.clientGame["score"]))
 
 
 def run():

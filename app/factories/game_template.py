@@ -30,7 +30,7 @@ class GameTemplate(ABC):
         pass
 
     @abstractmethod
-    def check_word(self, word):
+    def check_word(self, word, username):
         pass
 
     @abstractmethod

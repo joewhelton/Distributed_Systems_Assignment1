@@ -32,6 +32,16 @@ class ClientGame:
             self.clientGame["score"] = response.score
         return response.message
 
+    def check_word_multiplayer(self, word):
+        response = self.stub.CheckWordMultiplayer(spelling_bee_pb2.CheckWordMultiplayerRequest(
+            gameID=self.clientGame["gameID"],
+            userName=self.username,
+            word=word
+        ))
+        if response.status:
+            self.clientGame["scores"] = response.scores
+        return response.message
+
     def new_multiplayer_game(self):
         response = self.stub.NewMultiplayerGame(spelling_bee_pb2.NewMultiplayerGameRequest(userName=self.username))
         self.clientGame = {
@@ -41,7 +51,7 @@ class ClientGame:
             "middleLetter": response.middleLetter,
             "shareCode": response.shareCode,
             "timeLimit": response.timeLimit,
-            "gameType": 3
+            "gameType": "multiplayer"
         }
         self.shuffle_letters()
 
@@ -55,7 +65,7 @@ class ClientGame:
             "letters": list(response.letters),
             "middleLetter": response.middleLetter,
             "timeLimit": response.timeLimit,
-            "gameType": 3
+            "gameType": "multiplayer"
         }
         return True, "Game joined"
 

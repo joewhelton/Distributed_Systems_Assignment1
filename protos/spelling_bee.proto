@@ -79,14 +79,13 @@ message CheckWordMultiplayerRequest{
 message CheckWordMultiplayerResponse{
     bool status = 1;
     string message = 2;
-    int32 score = 3;
     repeated MultiPlayerScore scores = 4;
 }
 
 message MultiPlayerScore{
     string playerName = 1;
     int32 score = 2;
-    repeated Words wordList = 3;
+    repeated string wordList = 3;
 }
 
 message Words{
