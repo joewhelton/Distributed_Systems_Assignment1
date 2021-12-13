@@ -41,8 +41,8 @@ class SpellingBeeStub(object):
                 )
         self.GetMultiplayerStatus = channel.unary_unary(
                 '/app.SpellingBee/GetMultiplayerStatus',
-                request_serializer=spelling__bee__pb2.NewMultiplayerGameRequest.SerializeToString,
-                response_deserializer=spelling__bee__pb2.NewMultiplayerGameResponse.FromString,
+                request_serializer=spelling__bee__pb2.GetMultiplayerStatusRequest.SerializeToString,
+                response_deserializer=spelling__bee__pb2.GetMultiplayerStatusResponse.FromString,
                 )
 
 
@@ -115,8 +115,8 @@ def add_SpellingBeeServicer_to_server(servicer, server):
             ),
             'GetMultiplayerStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMultiplayerStatus,
-                    request_deserializer=spelling__bee__pb2.NewMultiplayerGameRequest.FromString,
-                    response_serializer=spelling__bee__pb2.NewMultiplayerGameResponse.SerializeToString,
+                    request_deserializer=spelling__bee__pb2.GetMultiplayerStatusRequest.FromString,
+                    response_serializer=spelling__bee__pb2.GetMultiplayerStatusResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -225,7 +225,7 @@ class SpellingBee(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/app.SpellingBee/GetMultiplayerStatus',
-            spelling__bee__pb2.NewMultiplayerGameRequest.SerializeToString,
-            spelling__bee__pb2.NewMultiplayerGameResponse.FromString,
+            spelling__bee__pb2.GetMultiplayerStatusRequest.SerializeToString,
+            spelling__bee__pb2.GetMultiplayerStatusResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

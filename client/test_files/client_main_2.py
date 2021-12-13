@@ -8,10 +8,14 @@ gameTypes = {
 
 
 def format_multiplayer_scores(playerScores):
-    # print(playerScores)
-    # print(playerScores[0])
     for player in playerScores:
         print("{}'s total: {}".format(player.playerName, player.score))
+
+
+def print_multiplayer_status(playerScores, status, timeRemaining):
+    print(status)
+    print("{} seconds remaining".format(timeRemaining))
+    format_multiplayer_scores(playerScores)
 
 
 def setup_menu():
@@ -22,21 +26,25 @@ def setup_menu():
 
 def multiplayer_menu():
     shareCode = ""
-    newOrJoin = input("Start (N)ew game or (J)oin existing?")
+    newOrJoin = input("Start (N)ew game or (J)oin existing? ")
     if newOrJoin == "J":
-        shareCode = input("Enter your sharecode")
+        shareCode = input("Enter your sharecode - ")
     return newOrJoin, shareCode
 
 
 def game_menu(game):
     print(game.display_letters())
     newWord = input("Enter word - ")
-    if game.clientGame["gameType"] == "multiplayer":
-        message = game.check_word_multiplayer(newWord)
-        print(message)
-        format_multiplayer_scores(game.clientGame["scores"])
+    if newWord == "1":
+        status, timeRemaining = game.get_multiplayer_status()
+        print_multiplayer_status(game.clientGame["scores"], status, timeRemaining)
     else:
-        print("{} - Total {}".format(game.check_word(newWord), game.clientGame["score"]))
+        if game.clientGame["gameType"] == "multiplayer":
+            message = game.check_word_multiplayer(newWord)
+            print(message)
+            format_multiplayer_scores(game.clientGame["scores"])
+        else:
+            print("{} - Total {}".format(game.check_word(newWord), game.clientGame["score"]))
 
 
 def run():
@@ -55,6 +63,10 @@ def run():
             else:
                 status, message = game.join_multiplayer_game(shareCode)
                 print(message)
+
+    if gameType == "multiplayer":
+        print("Enter (1) at any time to see game status")
+
     while True:
         game_menu(game)
 

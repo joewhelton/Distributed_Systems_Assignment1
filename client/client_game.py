@@ -69,6 +69,11 @@ class ClientGame:
         }
         return True, "Game joined"
 
+    def get_multiplayer_status(self):
+        response = self.stub.GetMultiplayerStatus(spelling_bee_pb2.GetMultiplayerStatusRequest(gameID=self.clientGame["gameID"]))
+        self.clientGame["scores"] = response.scores
+        return response.status, response.timeRemaining
+
     def display_letters(self):
         display_string = ""
         for i in range(len(self.clientGame["letters"])):

@@ -2,7 +2,7 @@ import logging
 from concurrent import futures
 
 import grpc
-from spelling_bee_pb2 import GameResponse, CheckWordResponse, NewMultiplayerGameResponse, JoinMultiplayerGameResponse, CheckWordMultiplayerResponse, NewMultiplayerGameResponse
+from spelling_bee_pb2 import GameResponse, CheckWordResponse, NewMultiplayerGameResponse, JoinMultiplayerGameResponse, CheckWordMultiplayerResponse, GetMultiplayerStatusResponse
 from spelling_bee_pb2_grpc import SpellingBeeServicer, add_SpellingBeeServicer_to_server
 from app.game_registry import GameRegistry
 from app.factories import object_factory, standard_game_builder, easy_game_builder, multiplayer_game_builder
@@ -17,7 +17,6 @@ class GameServer(SpellingBeeServicer):
         self.factory.register_builder('multiplayer', multiplayer_game_builder.MultiplayerGameBuilder())
 
     def StartGame(self, request, context):
-        # newGame = Game()
         newGame = self.factory.create(request.gameType)
         self.registry.add_game(newGame)
         return GameResponse(
@@ -91,7 +90,19 @@ class GameServer(SpellingBeeServicer):
         )
 
     def GetMultiplayerStatus(self, request, context):
-        pass
+        game = self.registry.get_game(request.gameID)
+        status = "Game Status - "
+        if not game.game_started:
+            status += "Not started, waiting for players to join"
+        elif game.game_ended:
+            status += "Complete - game has ended"
+        else:
+            status += "In progress"
+        return GetMultiplayerStatusResponse(
+            status=status,
+            scores=game.playerScores,
+            timeRemaining=game.get_remaining_time()
+        )
 
 
 def serve():

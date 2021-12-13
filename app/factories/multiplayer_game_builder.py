@@ -10,11 +10,12 @@ class MultiplayerGame(GameTemplate):
     max_players = 2
     timeLimit = 180  # Time in seconds
     game_started = False
+    game_ended = False
 
     def __init__(self):
         super().__init__()
         self.players = []
-        self.start_time = ""
+        self.end_time = datetime.datetime.now()
         self.playerScores = []
         self.shareCode = self.gameID[-5:]
         self.lock = threading.Lock()
@@ -43,7 +44,7 @@ class MultiplayerGame(GameTemplate):
         if word not in list(self.validWords.keys()):
             return False, "Invalid word"
 
-        self.lock.acquire()
+        self.lock.acquire()  # Make the critical section as short as possible for efficiency
         if word in self.guessedWords:
             return False, "Word already used"
         self.guessedWords.append(word)
@@ -75,7 +76,7 @@ class MultiplayerGame(GameTemplate):
             })
         if len(self.playerScores) == 2:
             self.game_started = True
-            self.start_time = datetime.datetime.now()
+            self.end_time = datetime.datetime.now() + datetime.timedelta(0, self.timeLimit)
         self.lock.release()
 
     def get_player_index(self, playerName):
@@ -83,6 +84,14 @@ class MultiplayerGame(GameTemplate):
             if item.get("playerName") == playerName:
                 return index
         return -1
+
+    def get_remaining_time(self):
+        if self.game_ended:
+            return 0
+        remaining_time = round((self.end_time - datetime.datetime.now()).total_seconds())
+        if remaining_time < 0:
+            return 0
+        return remaining_time
 
 
 class MultiplayerGameBuilder:

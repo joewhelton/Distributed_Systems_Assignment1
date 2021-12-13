@@ -8,7 +8,7 @@ service SpellingBee {
     rpc NewMultiplayerGame (NewMultiplayerGameRequest) returns (NewMultiplayerGameResponse) {}
     rpc JoinMultiplayerGame (JoinMultiplayerGameRequest) returns (JoinMultiplayerGameResponse) {}
     rpc CheckWordMultiplayer (CheckWordMultiplayerRequest) returns (CheckWordMultiplayerResponse) {}
-    rpc GetMultiplayerStatus (NewMultiplayerGameRequest) returns (NewMultiplayerGameResponse) {}
+    rpc GetMultiplayerStatus (GetMultiplayerStatusRequest) returns (GetMultiplayerStatusResponse) {}
 }
 
 message GameRequest {
@@ -62,12 +62,13 @@ message JoinMultiplayerGameResponse{
 }
 
 message GetMultiplayerStatusRequest{
-    string gameId = 1;
+    string gameID = 1;
 }
 
 message GetMultiplayerStatusResponse{
+	  string status = 1;
     repeated MultiPlayerScore scores = 2;
-    string timeRemaining = 3;
+    int32 timeRemaining = 3;
 }
 
 message CheckWordMultiplayerRequest{
