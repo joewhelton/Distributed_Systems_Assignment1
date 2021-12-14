@@ -94,8 +94,8 @@ class GameServer(SpellingBeeServicer):
         status = "Game Status - "
         if not game.game_started:
             status += "Not started, waiting for players to join"
-        elif game.game_ended:
-            status += "Complete - game has ended"
+        elif game.game_ended or game.get_remaining_time() == 0:
+            status += "Game has ended - {}".format(game.result)
         else:
             status += "In progress"
         return GetMultiplayerStatusResponse(

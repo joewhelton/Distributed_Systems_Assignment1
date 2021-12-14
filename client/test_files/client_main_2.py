@@ -16,6 +16,8 @@ def print_multiplayer_status(playerScores, status, timeRemaining):
     print(status)
     print("{} seconds remaining".format(timeRemaining))
     format_multiplayer_scores(playerScores)
+    for player in playerScores:
+        print("{}'s words: {}".format(player.playerName, player.wordList))
 
 
 def setup_menu():

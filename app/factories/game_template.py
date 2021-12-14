@@ -2,6 +2,8 @@ from os import path
 from random import randint
 import json
 import uuid
+import pika
+import datetime
 from abc import ABC, abstractmethod
 
 
@@ -24,6 +26,7 @@ class GameTemplate(ABC):
             self.pangram = list(pangrams.keys())[rand_num]
 
         self.generate_valid_words()
+        self.record_statistics("Game created")
 
     @abstractmethod
     def generate_valid_words(self):
@@ -36,3 +39,16 @@ class GameTemplate(ABC):
     @abstractmethod
     def calculate_score(self, word):
         pass
+
+    def record_statistics(self, message):
+        log = {
+            'timestame': datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
+            'gameID': self.gameID,
+            'message': message
+        }
+        connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+        channel = connection.channel()
+        channel.queue_declare(queue='spelling_bee_logs')
+        channel.basic_publish(exchange='', routing_key='spelling_bee_logs', body=json.dumps(log))
+        connection.close()
+

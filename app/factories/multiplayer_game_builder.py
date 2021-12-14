@@ -19,6 +19,7 @@ class MultiplayerGame(GameTemplate):
         self.playerScores = []
         self.shareCode = self.gameID[-5:]
         self.lock = threading.Lock()
+        self.result = ""
 
     def generate_valid_words(self):
         self.letters = set(self.pangram)
@@ -37,6 +38,11 @@ class MultiplayerGame(GameTemplate):
     def check_word(self, word, username):
         if not self.game_started:
             return False, "Waiting for other player to join"
+        if self.game_ended:
+            return False, "Game has ended - {}".format(self.result)
+        if self.get_remaining_time() == 0:
+            self.finish_game()
+            return False, "Game has ended - {}".format(self.result)
         if len(word) < self.min_word_length:
             return False, "Word is too short"
         if self.middleLetter not in word:
@@ -55,6 +61,7 @@ class MultiplayerGame(GameTemplate):
         if playerIndex > -1:
             self.playerScores[playerIndex]["score"] += wordScore
             self.playerScores[playerIndex]["wordList"].append(word)
+            self.record_statistics("{} scored {} with {}".format(username, wordScore, word))
             return True, "Scored {} with {}".format(wordScore, word)
 
     def calculate_score(self, word):
@@ -74,7 +81,9 @@ class MultiplayerGame(GameTemplate):
                 "score": 0,
                 "wordList": []
             })
+            self.record_statistics("{} joined game".format(playerName))
         if len(self.playerScores) == 2:
+            self.record_statistics("Game started")
             self.game_started = True
             self.end_time = datetime.datetime.now() + datetime.timedelta(0, self.timeLimit)
         self.lock.release()
@@ -86,12 +95,29 @@ class MultiplayerGame(GameTemplate):
         return -1
 
     def get_remaining_time(self):
+        if not self.game_started:
+            return self.timeLimit
         if self.game_ended:
             return 0
         remaining_time = round((self.end_time - datetime.datetime.now()).total_seconds())
-        if remaining_time < 0:
+        if remaining_time <= 0:
+            self.finish_game()
             return 0
         return remaining_time
+
+    def finish_game(self):
+        self.game_ended = True
+        if self.playerScores[0]["score"] == self.playerScores[1]["score"]:
+            self.result = "Game drew with {} points each".format(self.playerScores[0]["score"])
+        elif self.playerScores[0]["score"] > self.playerScores[1]["score"]:
+            self.result = "{} won with {} points to {}".format(self.playerScores[0]["playerName"],
+                                                               self.playerScores[0]["score"],
+                                                               self.playerScores[1]["score"])
+        else:
+            self.result = "{} won with {} points to {}".format(self.playerScores[1]["playerName"],
+                                                               self.playerScores[1]["score"],
+                                                               self.playerScores[0]["score"])
+        self.record_statistics("Game ended - {}".format(self.result))
 
 
 class MultiplayerGameBuilder:
