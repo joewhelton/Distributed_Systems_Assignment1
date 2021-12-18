@@ -42,8 +42,8 @@ class GameTemplate(ABC):
 
     def record_statistics(self, message):
         log = {
-            'timestame': datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
             'gameID': self.gameID,
+            'timestamp': datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
             'message': message
         }
         connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))

@@ -106,18 +106,21 @@ class MultiplayerGame(GameTemplate):
         return remaining_time
 
     def finish_game(self):
-        self.game_ended = True
-        if self.playerScores[0]["score"] == self.playerScores[1]["score"]:
-            self.result = "Game drew with {} points each".format(self.playerScores[0]["score"])
-        elif self.playerScores[0]["score"] > self.playerScores[1]["score"]:
-            self.result = "{} won with {} points to {}".format(self.playerScores[0]["playerName"],
-                                                               self.playerScores[0]["score"],
-                                                               self.playerScores[1]["score"])
-        else:
-            self.result = "{} won with {} points to {}".format(self.playerScores[1]["playerName"],
-                                                               self.playerScores[1]["score"],
-                                                               self.playerScores[0]["score"])
-        self.record_statistics("Game ended - {}".format(self.result))
+        self.lock.acquire()
+        if not self.game_ended:
+            self.game_ended = True
+            if self.playerScores[0]["score"] == self.playerScores[1]["score"]:
+                self.result = "Game drew with {} points each".format(self.playerScores[0]["score"])
+            elif self.playerScores[0]["score"] > self.playerScores[1]["score"]:
+                self.result = "{} won with {} points to {}".format(self.playerScores[0]["playerName"],
+                                                                   self.playerScores[0]["score"],
+                                                                   self.playerScores[1]["score"])
+            else:
+                self.result = "{} won with {} points to {}".format(self.playerScores[1]["playerName"],
+                                                                   self.playerScores[1]["score"],
+                                                                   self.playerScores[0]["score"])
+            self.record_statistics("Game ended - {}".format(self.result))
+        self.lock.release()
 
 
 class MultiplayerGameBuilder:
