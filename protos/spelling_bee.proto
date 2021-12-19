@@ -69,6 +69,7 @@ message GetMultiplayerStatusResponse{
 	  string status = 1;
     repeated MultiPlayerScore scores = 2;
     int32 timeRemaining = 3;
+    bool gameEnded = 4;
 }
 
 message CheckWordMultiplayerRequest{
@@ -81,6 +82,7 @@ message CheckWordMultiplayerResponse{
     bool status = 1;
     string message = 2;
     repeated MultiPlayerScore scores = 4;
+    bool gameEnded = 5;
 }
 
 message MultiPlayerScore{

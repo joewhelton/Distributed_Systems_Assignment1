@@ -28,7 +28,7 @@ def setup_menu():
 
 def multiplayer_menu():
     shareCode = ""
-    newOrJoin = input("Start (N)ew game or (J)oin existing? ")
+    newOrJoin = input("Start (N)ew game or (J)oin existing? ").upper()
     if newOrJoin == "J":
         shareCode = input("Enter your sharecode - ")
     return newOrJoin, shareCode
@@ -61,7 +61,7 @@ def run():
             if newOrJoin == "N":
                 game.new_multiplayer_game()
                 status = True
-                print("Game created, your share code is {}", game.clientGame.get('shareCode'))
+                print("Game created, your share code is ", game.clientGame.get('shareCode'))
             else:
                 status, message = game.join_multiplayer_game(shareCode)
                 print(message)
@@ -69,7 +69,7 @@ def run():
     if gameType == "multiplayer":
         print("Enter (1) at any time to see game status")
 
-    while True:
+    while not game.clientGame.get('gameEnded'):
         game_menu(game)
 
 

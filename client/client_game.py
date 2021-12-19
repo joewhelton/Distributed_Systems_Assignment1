@@ -19,7 +19,8 @@ class ClientGame:
             "score": response.score,
             "letters": list(response.letters),
             "middleLetter": response.middleLetter,
-            "gameType": gameType
+            "gameType": gameType,
+            "gameEnded": False
         }
         self.shuffle_letters()
 
@@ -40,6 +41,7 @@ class ClientGame:
         ))
         if response.status:
             self.clientGame["scores"] = response.scores
+        self.clientGame["gameEnded"] = response.gameEnded
         return response.message
 
     def new_multiplayer_game(self):
@@ -72,6 +74,7 @@ class ClientGame:
     def get_multiplayer_status(self):
         response = self.stub.GetMultiplayerStatus(spelling_bee_pb2.GetMultiplayerStatusRequest(gameID=self.clientGame["gameID"]))
         self.clientGame["scores"] = response.scores
+        self.clientGame["gameEnded"] = response.gameEnded
         return response.status, response.timeRemaining
 
     def display_letters(self):

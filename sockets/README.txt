@@ -1,0 +1,1 @@
+This sockets server runs locally.  For the Docker version, see /statserver/ directory

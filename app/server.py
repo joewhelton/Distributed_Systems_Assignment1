@@ -85,8 +85,9 @@ class GameServer(SpellingBeeServicer):
         return CheckWordMultiplayerResponse(
             status=status,
             message=message,
-            scores=game.playerScores
+            scores=game.playerScores,
             # scores=str.join(game.playerScores)
+            gameEnded=game.game_ended
         )
 
     def GetMultiplayerStatus(self, request, context):
@@ -101,7 +102,8 @@ class GameServer(SpellingBeeServicer):
         return GetMultiplayerStatusResponse(
             status=status,
             scores=game.playerScores,
-            timeRemaining=game.get_remaining_time()
+            timeRemaining=game.get_remaining_time(),
+            gameEnded=game.game_ended
         )
 
 
