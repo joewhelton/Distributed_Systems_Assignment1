@@ -2,7 +2,7 @@ import socket
 import json
 
 SERVER = "127.0.0.1"
-PORT = 64001
+PORT = 6400
 
 
 def display_results(response_data):

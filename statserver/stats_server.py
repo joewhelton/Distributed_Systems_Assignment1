@@ -12,7 +12,7 @@ def ConsumerCallback(ch, method, properties, body):
 
 
 def MessageConsumeThread():
-    conn = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    conn = pika.BlockingConnection(pika.ConnectionParameters('host.docker.internal'))
     channel = conn.channel()
     channel.queue_declare(queue='spelling_bee_logs')
     channel.basic_consume(queue='spelling_bee_logs',
@@ -31,6 +31,7 @@ def GetLastXEntries(x):
 
 
 class ClientThread(threading.Thread):
+
     def __init__(self, client_address, client_socket):
         threading.Thread.__init__(self)
         self.c_socket = client_socket
@@ -45,12 +46,13 @@ class ClientThread(threading.Thread):
         print("Sent ", request['fetchRecords'], " records to", clientAddress)
 
 
-print("Server starting...")
-LOCALHOST = "127.0.0.1"
+HOST = '0.0.0.0'
 PORT = 6400
+
+print("Server starting...")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.bind((LOCALHOST, PORT))
+server.bind((HOST, PORT))
 print("Server started")
 
 print("MQ Consumer service starting...")
